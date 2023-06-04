@@ -20,15 +20,57 @@ public class ConnectionServiceImpl implements ConnectionService {
     ConnectionRepository connectionRepository2;
 
     @Override
-    public User connect(int userId, String countryName) throws Exception{
-
+    public User connect(int userId, String countryName) throws Exception {
+        User user=userRepository2.findById(userId).get();
+        if(user.getConnected()){
+            throw new Exception("Already connected");
+        }
+        if(user.getCountry().getCountryName().equals(countryName)){
+            return user;
+        }
+        if(user.getServiceProviderList().size()==0){
+            throw new Exception("Unable to connect");
+        }
+        List<ServiceProvider> list=user.getServiceProviderList();
+        boolean flag=true;
+        ServiceProvider s1 = null;
+        Country c1 = null;
+        for(ServiceProvider x: list){
+            List<Country> countries=x.getCountryList();
+            for(Country xx: countries){
+                if(xx.getCountryName().equals(countryName)){
+                    s1=x;
+                    c1=xx;
+                    flag=false;
+                    break;
+                }
+            }
+            if(!flag){break;}
+        }
+        if(flag){
+            throw new Exception("Unable to connect");
+        }
+        user.setMarkedIP(c1.getCode()+"."+s1.getId()+"."+userId);
+        return user;
     }
     @Override
     public User disconnect(int userId) throws Exception {
-
+        User user=userRepository2.findById(userId).get();
+        if(!user.getConnected()){
+            throw new Exception("Already disconnected");
+        }
+        List<Connection> connectionList=user.getConnectionList();
+        for(Connection x:connectionList){
+            x.setUser(null);
+        }
+        user.setMarkedIP(null);
+        user.setConnected(false);
+        user.setConnectionList(null);
+        return user;
     }
     @Override
-    public User communicate(int senderId, int receiverId) throws Exception {
-
+    public User communicate(int senderId, int receiverId){
+        User user=new User();
+        return user;
     }
 }

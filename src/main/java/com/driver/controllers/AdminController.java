@@ -1,5 +1,8 @@
 package com.driver.controllers;
 
+import com.driver.model.Admin;
+import com.driver.model.ServiceProvider;
+import com.driver.services.AdminService;
 import com.driver.services.impl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/admin")
 public class AdminController {
     @Autowired
-    AdminServiceImpl adminService;
+    AdminService adminService;
 
     @PostMapping("/register")
     public ResponseEntity<Void> registerAdmin(@RequestParam String username, @RequestParam String password){
