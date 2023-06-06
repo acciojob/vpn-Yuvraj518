@@ -12,7 +12,7 @@ public class User {
     private String username;
     private String password;
     private String originIp;
-    private String markedIp;
+    private String maskedIp;
     private boolean connected;
     @OneToOne
     @JoinColumn
@@ -32,7 +32,7 @@ public class User {
         this.username = userName;
         this.password = password;
         this.originIp = originIP;
-        this.markedIp = markedIP;
+        this.maskedIp = markedIP;
         this.connected = connected;
     }
 
@@ -68,12 +68,12 @@ public class User {
         this.originIp = originIp;
     }
 
-    public String getMarkedIp() {
-        return markedIp;
+    public String getMaskedIp() {
+        return maskedIp;
     }
 
-    public void setMarkedIp(String markedIp) {
-        this.markedIp = markedIp;
+    public void setMaskedIp(String maskedIp) {
+        this.maskedIp = maskedIp;
     }
 
     public Boolean getConnected() {
