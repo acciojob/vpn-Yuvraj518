@@ -25,7 +25,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         if(user.getConnected()){
             throw new Exception("Already connected");
         }
-        if(user.getCountry().getCountryName().equals(countryName)){
+        if(user.getOriginalCountry().getCountryName().equals(countryName)){
             return user;
         }
         if(user.getServiceProviderList().size()==0){

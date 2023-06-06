@@ -31,14 +31,14 @@ public class UserServiceImpl implements UserService {
         }
         Country country=new Country(CountryName.valueOf(pp.toString()),CountryName.valueOf(pp).toCode());
         User user=new User();
-        user.getCountry().setCountryName(CountryName.valueOf(countryName));
+        user.getOriginalCountry().setCountryName(CountryName.valueOf(countryName));
         user.setUsername(username);
         user.setPassword(password);
         user.setConnected(false);
         country.setUser(user);
-        user.setCountry(country);
+        user.setOriginalCountry(country);
         User savedUser=userRepository3.save(user);
-        savedUser.setOriginIp(user.getCountry().getCode()+"."+savedUser.getId());
+        savedUser.setOriginalIp(user.getOriginalCountry().getCode()+"."+savedUser.getId());
 
         return userRepository3.save(savedUser);
     }
