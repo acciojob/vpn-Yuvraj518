@@ -9,10 +9,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String userName;
+    private String username;
     private String password;
-    private String originIP;
-    private String markedIP;
+    private String originIp;
+    private String markedIp;
     private boolean connected;
     @OneToOne
     @JoinColumn
@@ -29,10 +29,10 @@ public class User {
     public User(){}
 
     public User(String userName, String password, String originIP, String markedIP, Boolean connected) {
-        this.userName = userName;
+        this.username = userName;
         this.password = password;
-        this.originIP = originIP;
-        this.markedIP = markedIP;
+        this.originIp = originIP;
+        this.markedIp = markedIP;
         this.connected = connected;
     }
 
@@ -44,12 +44,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -60,20 +60,20 @@ public class User {
         this.password = password;
     }
 
-    public String getOriginIP() {
-        return originIP;
+    public String getOriginIp() {
+        return originIp;
     }
 
-    public void setOriginIP(String originIP) {
-        this.originIP = originIP;
+    public void setOriginIp(String originIp) {
+        this.originIp = originIp;
     }
 
-    public String getMarkedIP() {
-        return markedIP;
+    public String getMarkedIp() {
+        return markedIp;
     }
 
-    public void setMarkedIP(String markedIP) {
-        this.markedIP = markedIP;
+    public void setMarkedIp(String markedIp) {
+        this.markedIp = markedIp;
     }
 
     public Boolean getConnected() {

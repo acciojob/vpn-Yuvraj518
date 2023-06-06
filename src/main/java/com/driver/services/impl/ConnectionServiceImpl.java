@@ -50,7 +50,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         if(flag){
             throw new Exception("Unable to connect");
         }
-        user.setMarkedIP(c1.getCode()+"."+s1.getId()+"."+userId);
+        user.setMarkedIp(c1.getCode()+"."+s1.getId()+"."+userId);
         return user;
     }
     @Override
@@ -63,7 +63,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         for(Connection x:connectionList){
             x.setUser(null);
         }
-        user.setMarkedIP(null);
+        user.setMarkedIp(null);
         user.setConnected(false);
         user.setConnectionList(null);
         return user;
